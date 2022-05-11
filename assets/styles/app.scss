@@ -1,0 +1,59 @@
+$hero-c: #21325b;
+$mate-c: #1be;
+$gray-c: #789;
+
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: $hero-c;
+  color: #f8f9fa;
+
+  padding: 2rem 0;
+}
+
+footer {
+  background-color: $gray-c;
+  color: #f8f9fa;
+  padding: 1rem;
+
+  margin-top: auto;
+}
+
+footer p {
+  text-align: center;
+}
+
+.container {
+  // border: 2px solid #eb3;
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: 780px) {
+    max-width: 1024px;
+  }
+}
+
+.logo__link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: $mate-c;
+  }
+}
+
+.hero__image {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+}

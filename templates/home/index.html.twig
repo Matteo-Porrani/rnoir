@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rayon Noir | Accueil{% endblock %}
+
+{% block body %}
+
+  {% block header %}
+    {{ parent() }}
+  {% endblock %}
+
+
+  {% block main %}
+    <div class="container">
+      <h1>Page d'accueil</h1>
+      <img class="hero__image" src="images/rain.jpg" alt="">
+
+      <a href="{{ path('home_new') }}">Voir les nouveautés</a>
+    </div>
+  {% endblock %}
+
+
+  {% block footer %}
+    {{ parent() }}
+  {% endblock %}
+
+{% endblock %}
