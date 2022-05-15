@@ -7,7 +7,45 @@ home_index:
   controller: App\Controller\HomeController::index
   methods: GET
 
+# Catalogue Complet
+home_catalog:
+  path: /catalog
+  controller: App\Controller\HomeController::catalog
+  methods: GET
+
+# Nouveautés
 home_new:
   path: /new
   controller: App\Controller\HomeController::new
   methods: GET
+
+home_classic:
+  path: /classic
+  controller: App\Controller\HomeController::classic
+  methods: GET
+
+home_thriller:
+  path: /thriller
+  controller: App\Controller\HomeController::thriller
+  methods: GET
+
+book_detail:
+  path: /detail/{id}
+  controller: App\Controller\BookController::detail
+  methods: GET
+
+# ADMIN
+admin_index:
+  path: /admin
+  controller: App\Controller\AdminController::index
+  methods: GET|POST
+
+admin_book_form:
+  path: /admin/book/form/
+  controller: App\Controller\AdminController::bookForm
+  methods: GET|POST
+
+admin_book_edit:
+  path: /admin/book/edit/{id}
+  controller: App\Controller\AdminController::bookForm
+  methods: GET|POST

@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    {% block main %}
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="text-info">{{ book.id }}</p>
+                        <h1 class="text-primary">{{ book.title }}</h1>
+
+                        {# set DEFAULT values if no author is provided #}
+                        {% set verifiedAuthors, verifiedAuthorsClass = 'Auteur Non Renseigné', 'fst-italic text-info' %}
+
+                        {# OVERRIDE values if book.athors|length > 0 #}
+                        {% if book.authors|length > 0 %}
+                            {% set verifiedAuthors, verifiedAuthorsClass = book.authors | join(', '), '' %}
+                        {% endif %}
+
+                        <p class="fs-5 {{ verifiedAuthorsClass }}">De : <span
+                                    class="fw-bold">{{ verifiedAuthors }}</span></p>
+
+                        <p class="fs-5">{{ book.summary }}</p>
+
+                        <div class="row w-50">
+                            <div class="col text-light bg-dark py-2">
+                                <p>Première publication :
+                                    <span class="fw-bold text-secondary">{{ book.datePublished|date('d/m/Y') }}</span>
+                                </p>
+                                <p>Nb de pages :
+                                    <span class="fw-bold text-secondary">{{ book.pages }}</span>
+                                </p>
+                                <p>Prix :
+                                    <span class="fw-bold text-secondary">{{ book.price }} &euro;</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    {% endblock %}
+    {# </editor-fold> #}
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

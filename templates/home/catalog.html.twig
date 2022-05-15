@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {# gets the default scripts from 'base.html.twig' #}
+    {{ parent() }}
+
+    {# inserts a page-specific script 'new.js' #}
+    {{ encore_entry_script_tags('new') }}
+{% endblock %}
+
+{% block title %}Rayon Noir | Catalogue{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    {% block main %}
+        <div class="container">
+            <h1 class="text-primary text-center my-3">Catalogue</h1>
+            <img class="category__image" src="{{ asset('build/images/exit.jpg') }}" alt="">
+
+
+            <div class="row my-3">
+                {% for book in books %}
+                    <div class="col-4 mb-3">
+                        {% include('home/card_catalog.html.twig') %}
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    {% endblock %}
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+  {# gets the default scripts from 'base.html.twig' #}
+  {{ parent() }}
+  
+  {# inserts a page-specific script 'new.js' #}
+  {{ encore_entry_script_tags('bookActivation') }}
+{% endblock %}
+
+{% block title %}RN Admin | Accueil{% endblock %}
+
+{% block body %}
+
+  {% block header %}
+    {{ parent() }}
+  {% endblock %}
+
+
+  {% block main %}
+    {{ parent() }}
+
+    {{ include('nav/_nav_admin.html.twig') }}
+
+    <div class="container">
+
+      <div class="row my-3">
+        <div class="col">
+          <form action="{{ path('admin_index') }}" method="POST">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Titre</th>
+                  <th scope="col">Date Publication</th>
+                  <th scope="col">Actif</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for book in books %}
+
+                  <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.datePublished | date('d/m/Y')}}</td>
+                    <td>
+
+                      {% set state = '' %}
+                      {% if book.recent %}
+                        {% set state = 'checked' %}
+                      {% endif %}
+                        <div class="form-check form-switch">
+                          <input type="checkbox" class="book-activation-switch form-check-input" role="switch" id="switch-{{ book.id }}" {{ state }}>
+                        </div>
+
+                        {# hidden input #}
+                        <input class="book-activation-verif" type="text" name="{{ book.id }}" hidden>
+                    </td>
+
+                    <td>
+                      <a class="btn btn-secondary" href="{{ path('admin_book_edit', { 'id': book.id }) }}">Edit</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+
+      
+      <section id="bookActivationAlert" class="d-none">
+        <div class="container">
+          <div class="row">
+            <div class="col alert alert-danger" role="alert">
+              <p class="h5 text-center">Vous devez enregistrer les derniers changements</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </div> <!-- end of container --> 
+  {% endblock %}
+
+
+  {% block footer %}
+    {{ parent() }}
+  {% endblock %}
+
+{% endblock %}

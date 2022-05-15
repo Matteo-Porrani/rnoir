@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+  {# gets the default scripts from 'base.html.twig' #}
+  {{ parent() }}
+  
+  {# inserts a page-specific script 'new.js' #}
+  {{ encore_entry_script_tags('new') }}
+{% endblock %}
+
+{% block title %}Rayon Noir | Nouveautés{% endblock %}
+
+{% block body %}
+
+  {% block header %}
+    {{ parent() }}
+  {% endblock %}
+
+
+  {% block main %}
+    <div class="container">
+      <h2 class="text-primary text-center my-3">Nouveautés</h2>
+      <img class="category__image" src="{{ asset('build/images/detective.jpg') }}" alt="">
+
+      {% for book in books %}
+        <div class="row my-3">
+          <div class="col">
+            <h3 class="bg-primary text-light p-2">{{ book.title }}</h3>
+            <p>{{ book.datePublished | date('d/m/Y') }}</p>
+            <p>{{ book.summary }}</p>
+
+            <a href="{{ path('book_detail', { 'id': book.id }) }}" class="btn btn-outline-primary">Voir plus</a>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  {% endblock %}
+
+
+  {% block footer %}
+    {{ parent() }}
+  {% endblock %}
+
+{% endblock %}

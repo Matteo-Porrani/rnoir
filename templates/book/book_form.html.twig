@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+  {% block header %}
+    {{ parent() }}
+  {% endblock %}
+
+  {% block main %}
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Ajout Livre</h1>
+
+            {{ form_start(form) }}
+
+              <div class="mb-3">
+                {{ form_label(form.title, null, { 'label_attr': { 'class': 'form-label text-info' }}) }}
+                {{ form_widget(form.title, { 'attr': { 'class': 'form-control' }}) }}
+              </div>
+              
+              <div class="mb-3">
+                {{ form_label(form.summary, null, { 'label_attr': { 'class': 'form-label text-info' }}) }}
+                {{ form_widget(form.summary, { 'attr': { 'class': 'form-control' }}) }}
+              </div>
+              
+              <div class="mb-3">
+                
+              </div>
+
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-4">
+                    {{ form_label(form.authors, null, { 'label_attr': { 'class': 'form-label text-info' }}) }}
+                    {{ form_widget(form.authors, { 'attr': { 'class': 'form-select' }}) }}
+                  </div>
+                  <div class="col-4">
+                    {{ form_label(form.datePublished, null, { 'label_attr': { 'class': 'form-label text-info' }}) }}
+                    {{ form_widget(form.datePublished, { 'attr': { 'class': 'form-control' }}) }}
+                  </div>
+                  <div class="col-4 d-flex justify-content-center align-items-center">
+                    <div class="form-check form-switch">
+                      {{ form_widget(form.active, { 'attr': { 'class': 'form-check-input', 'role': 'switch' }}) }}
+                      {{ form_label(form.active, null, { 'label_attr': { 'class': 'form-check-label text-info' }}) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                {{ form_widget(form.submit, { 'attr': { 'class': 'btn btn-primary' }}) }}
+              </div>
+              
+
+
+            {{ form_end(form) }}
+
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock %}
+
+
+  {% block footer %}
+    {{ parent() }}
+  {% endblock %}
+
+{% endblock %}

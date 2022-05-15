@@ -1,0 +1,17 @@
+<div class="card rounded rounded-3 border border-1 border-success p-3">
+    <h3 class="h5">{{ book.title }}
+        {% if book.recent %}
+            <span class="badge bg-success ms-2">Nouveauté</span>
+        {% endif %}
+    </h3>
+
+    {% if book.authors|length == 0 %}
+        <p class="text-danger fst-italic">Aucun auteur enregistré</p>
+    {% else %}
+        <p>{{ book.authors|join(', ') }}</p>
+    {% endif %}
+
+    <p class="text-info">{{ book.summary }}</p>
+    <small>Details placeholder</small>
+    <a href="{{ path('book_detail', { 'id': book.id }) }}">Voir plus</a>
+</div>
