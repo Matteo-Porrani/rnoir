@@ -14,6 +14,9 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'some_number' => $this->getParameter('app.some_number'),
+            'current_discount' => $this->getParameter('app.current_discount'),
+            'multiple' => $this->getParameter('app.multiple'),
         ]);
     }
 
